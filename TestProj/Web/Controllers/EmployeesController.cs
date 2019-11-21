@@ -6,10 +6,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Utility;
+using Web.Filter;
 using Web.Service;
 
 namespace Web.Controllers
 {
+    [ExceptionHandle]
     public class EmployeesController : Controller
     {
         EmpService _service = new EmpService();
