@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{5AF4A89C-DB8F-455B-9D65-6D50D0A43F51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTransferObject", "DataTransferObject\DataTransferObject.csproj", "{19E0FB09-AFE8-46EA-853F-26037EC9B65A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{9816B24F-FE3E-4FEE-845A-7E5B5A55CBC0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{5AF4A89C-DB8F-455B-9D65-6D50D0A43F51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AF4A89C-DB8F-455B-9D65-6D50D0A43F51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AF4A89C-DB8F-455B-9D65-6D50D0A43F51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19E0FB09-AFE8-46EA-853F-26037EC9B65A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19E0FB09-AFE8-46EA-853F-26037EC9B65A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19E0FB09-AFE8-46EA-853F-26037EC9B65A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19E0FB09-AFE8-46EA-853F-26037EC9B65A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9816B24F-FE3E-4FEE-845A-7E5B5A55CBC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9816B24F-FE3E-4FEE-845A-7E5B5A55CBC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9816B24F-FE3E-4FEE-845A-7E5B5A55CBC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9816B24F-FE3E-4FEE-845A-7E5B5A55CBC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
