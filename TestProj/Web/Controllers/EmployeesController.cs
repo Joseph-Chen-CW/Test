@@ -1,4 +1,5 @@
 ﻿using DataTransferObject;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,42 @@ namespace Web.Controllers
             }
 
             var result = this._service.Create(model);
+            if (result.State == StateEnum.Success)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.Error = result.Message;
+                return View("Error");
+            }
+        }
+
+        public ActionResult Update(int id)
+        {
+            var data = this._service.Find(id);
+            if (data.State == StateEnum.Success)
+            {
+                var emp = JsonConvert.DeserializeObject<Employee4AccessVM>(data.Message);
+                return View(emp);
+            }
+            else
+            {
+                ViewBag.Error = data.Message;
+                return View("Error");
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateConfirm(Employee4AccessVM model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Update");
+            }
+
+            var result = this._service.Update(model);
             if (result.State == StateEnum.Success)
             {
                 return RedirectToAction("Index");
