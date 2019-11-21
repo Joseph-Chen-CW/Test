@@ -67,5 +67,23 @@ namespace API.Controllers
 
             return result;
         }
+
+        [HttpPost]
+        public CommonRequest Delete(int id)
+        {
+            var result = new CommonRequest();
+
+            if (this._dao.Delete(id))
+            {
+                result.State = StateEnum.Success;
+            }
+            else
+            {
+                result.State = StateEnum.Fail;
+                result.Message = "無刪除項目";
+            }
+
+            return result;
+        }
     }
 }

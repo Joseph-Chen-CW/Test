@@ -65,5 +65,22 @@ namespace API.EF
 
             return true;
         }
+
+        public bool Delete(int id)
+        {
+            var data = this._db.Employees
+                .Where(p => p.EmployeeID == id)
+                .FirstOrDefault();
+
+            if (data == null)
+            {
+                return false;
+            }
+
+            this._db.Employees.Remove(data);
+            this._db.SaveChanges();
+
+            return true;
+        }
     }
 }

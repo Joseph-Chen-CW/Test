@@ -60,11 +60,24 @@ namespace Web.Service
         {
             var url = $"{this._apiUrl}/Employees/Update";
             var json = HttpConnector.Post(url, JsonConvert.SerializeObject(model), Encoding.UTF8);
-            if (json.State == StateEnum.Timeout)
+            if (json.State == StateEnum.Success)
             {
-                return json;
+                return JsonConvert.DeserializeObject<CommonRequest>(json.Message);
             }
-            return JsonConvert.DeserializeObject<CommonRequest>(json.Message);
+
+            return json;
+        }
+
+        internal CommonRequest Delete(int id)
+        {
+            var url = $"{this._apiUrl}/Employees/Delete/{id}";
+            var json = HttpConnector.Post(url, "", Encoding.UTF8);
+            if (json.State == StateEnum.Success)
+            {
+                return JsonConvert.DeserializeObject<CommonRequest>(json.Message);
+            }
+
+            return json;
         }
     }
 }

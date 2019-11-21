@@ -88,5 +88,34 @@ namespace Web.Controllers
                 return View("Error");
             }
         }
+
+        public ActionResult Delete(int id)
+        {
+            var result = this._service.Delete(id);
+            if (result.State == StateEnum.Success)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.Error = result.Message;
+                return View("Error");
+            }
+        }
+
+        public ActionResult Details(int id)
+        {
+            var data = this._service.Find(id);
+            if (data.State == StateEnum.Success)
+            {
+                var emp = JsonConvert.DeserializeObject<Employee4AccessVM>(data.Message);
+                return View(emp);
+            }
+            else
+            {
+                ViewBag.Error = data.Message;
+                return View("Error");
+            }
+        }
     }
 }
