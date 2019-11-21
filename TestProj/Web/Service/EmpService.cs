@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Text;
 using System.Web;
 using Utility;
 
@@ -13,9 +14,9 @@ namespace Web.Service
     {
         string _apiUrl = ConfigurationManager.AppSettings["ApiUrl"];
 
-        internal EmployeeCollection GetEmployeeList()
+        internal EmployeeCollection Read()
         {
-            var url = $"{this._apiUrl}/Employees/GetEmployeeList";
+            var url = $"{this._apiUrl}/Employees/Read";
             var json = HttpConnector.Get(url);
             if (json.State == StateEnum.Success)
             {
@@ -28,6 +29,17 @@ namespace Web.Service
                 Message = json.Message,
             };
             return error;
+        }
+
+        internal CommonRequest Create(Employee4AccessVM model)
+        {
+            var url = $"{this._apiUrl}/Employees/Create";
+            var json = HttpConnector.Post(url, JsonConvert.SerializeObject(model), Encoding.UTF8);
+            if (json.State == StateEnum.Timeout)
+            {
+                return json;
+            }
+            return JsonConvert.DeserializeObject<CommonRequest>(json.Message);
         }
     }
 }

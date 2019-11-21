@@ -16,7 +16,17 @@ namespace API.Controllers
         [HttpGet]
         public EmployeeCollection GetEmployeeList()
         {
-            return this._dao.GetEmployeeList();
+            return this._dao.Read();
+        }
+
+        [HttpPost]
+        public CommonRequest Create(Employees model)
+        {
+            this._dao.Create(model);
+            return new CommonRequest()
+            {
+                State = StateEnum.Success,
+            };
         }
     }
 }

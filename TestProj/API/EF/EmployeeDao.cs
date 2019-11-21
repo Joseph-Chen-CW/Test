@@ -10,7 +10,7 @@ namespace API.EF
     {
         NorthwindEntities _db = new NorthwindEntities();
 
-        public EmployeeCollection GetEmployeeList()
+        public EmployeeCollection Read()
         {
             var result = new EmployeeCollection()
             {
@@ -33,6 +33,12 @@ namespace API.EF
             }
 
             return result;
+        }
+
+        public void Create(Employees model)
+        {
+            this._db.Employees.Add(model);
+            this._db.SaveChanges();
         }
     }
 }
